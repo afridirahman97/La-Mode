@@ -10,8 +10,10 @@ class MyApp extends StatelessWidget {
    return MaterialApp(
      title: 'La Mode',
      theme: ThemeData(
-      primarySwatch: Colors.blue,
-   ),
+       colorScheme: ThemeData().colorScheme.copyWith(
+         primary: Color.fromRGBO(168, 11, 3, 1),
+       ),
+     ),
    home: HomeScreenPage(),
    );
  }

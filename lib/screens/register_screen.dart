@@ -12,15 +12,18 @@ class RegisterScreen extends StatelessWidget {
           title: Text(''),
           backgroundColor: Colors.transparent,
           elevation: 0,
+
         ),
-        body: Center(
+
+        body: SingleChildScrollView(
+
             child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    height: 60,
-                    width: 150,
-                    margin: const EdgeInsets.fromLTRB(20, 00, 20, 70),
+                    height: 70,
+                    width: 180,
+                    margin: const EdgeInsets.fromLTRB(10, 60, 20, 70),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage('assets/images/logo_red.png'),
@@ -42,6 +45,7 @@ class RegisterScreen extends StatelessWidget {
                             borderSide: BorderSide(color: Colors.black),
                           ),
                           hintText: "Full Name",
+                          prefixIcon: Icon(Icons.account_circle),
                           hintStyle: TextStyle(color: Colors.grey),
                           border: UnderlineInputBorder(),
                           labelStyle: TextStyle(
@@ -57,12 +61,13 @@ class RegisterScreen extends StatelessWidget {
                       // border: Border(bottom: BorderSide(color: Colors.grey[200]))
                     ),
                     child: TextField(
-
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
                           hintText: "Email",
+                          prefixIcon: Icon(Icons.email),
                           hintStyle: TextStyle(color: Colors.grey),
                           border: UnderlineInputBorder(),
                           labelStyle: TextStyle(
@@ -78,12 +83,14 @@ class RegisterScreen extends StatelessWidget {
                       // border: Border(bottom: BorderSide(color: Colors.grey[200]))
                     ),
                     child: TextField(
-
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
                       decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
                           ),
                           hintText: "Password",
+                          prefixIcon:Icon(Icons.lock),
                           hintStyle: TextStyle(color: Colors.grey),
                           border: UnderlineInputBorder(),
                           labelStyle: TextStyle(
@@ -93,15 +100,21 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   new Container(
-                    constraints: BoxConstraints(minWidth: 150),
-                    margin: const EdgeInsets.fromLTRB(20, 20, 20, 00),
+                    constraints: BoxConstraints(minWidth: 170, minHeight: 45),
+                    margin: const EdgeInsets.fromLTRB(20, 40, 20, 00),
                     child: RaisedButton(
 
-                      child: Text('Register'),
-                      color: Color.fromRGBO(168, 11, 3, 1),
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                      child: Text('Register',
+                          style: TextStyle(fontSize: 18)
+                      ),
+                      color: Color.fromRGBO(250, 250, 250, 1),
+                      textColor: Color.fromRGBO(168, 11, 3, 1),
+                      shape: RoundedRectangleBorder(side: BorderSide(
+                          color: Color.fromRGBO(168, 11, 3, 1),
+                          width: 1,
+                          style: BorderStyle.solid
+                      ),
+                          borderRadius: BorderRadius.all(Radius.circular(25.0))),
                       onPressed: (){
                         Navigator.push(
                             context, MaterialPageRoute(

@@ -1,140 +1,173 @@
 import 'package:flutter/material.dart';
 
-import './otpConfirm_screen.dart';
+import './register_screen.dart';
 
 class OtpConfirm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xfff7f6fb),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 24, horizontal: 32),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Icon(
-                    Icons.arrow_back,
-                    size: 32,
-                    color: Colors.black54,
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color.fromRGBO(168, 11, 3, 1), //change your color here
+          ),
+          title: Text(''),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+
+        body: Center(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    height: 70,
+                    width: 180,
+                    margin: const EdgeInsets.fromLTRB(20, 60, 20, 80),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/logo_red.png'),
+                            fit: BoxFit.fill
+                        )
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-
-                ),
-                child: Image.asset(
-                  'assets/images/logo_red.png',
-                ),
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              Text(
-                'Verification',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Enter your OTP code number",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black38,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 28,
-              ),
-              Container(
-                padding: EdgeInsets.all(28),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-
+                  SizedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                    children: [
+                      OtpForm(),
                       ],
+                     ),
                     ),
-                    SizedBox(
-                      height: 22,
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.purple),
-                          shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(24.0),
-                            ),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(14.0),
-                          child: Text(
-                            'Verify',
-                            style: TextStyle(fontSize: 16),
-                          ),
+                  ),
+
+                      TextButton(
+                        onPressed: (){},
+                        child: Text('Re-Send OTP',
+                          style: TextStyle(color: Colors.grey, fontSize: 16),
                         ),
                       ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Text(
-                "Didn't you receive any code?",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black38,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Text(
-                "Resend New Code",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.purple,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
-      ),
+                  new Container(
+                    constraints: BoxConstraints(minWidth: 170, minHeight: 45),
+                    margin: const EdgeInsets.fromLTRB(20, 15, 20, 20),
+                    child: RaisedButton(
+
+                      child: Text('Confirm',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      color: Color.fromRGBO(250, 250, 250, 1),
+                      textColor: Color.fromRGBO(168, 11, 3, 1),
+                      shape: RoundedRectangleBorder(side: BorderSide(
+                          color: Color.fromRGBO(168, 11, 3, 1),
+                          width: 1,
+                          style: BorderStyle.solid
+                      ),
+                          borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                      onPressed: (){
+                        Navigator.push(
+                            context, MaterialPageRoute(
+                          builder: (context) => RegisterScreen(),
+                        ));
+                      },
+                    ),
+                  ),
+
+                ]
+            )
+        )
     );
+
   }
 }
+
+    class OtpForm extends StatefulWidget {
+      @override
+      _OtpFormState createState() => _OtpFormState();
+
+    }
+
+    class _OtpFormState extends State<OtpForm> {
+      @override
+      Widget build(BuildContext context) {
+        return Form(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 80,
+                child: TextFormField(
+                  obscureText: false,
+                  keyboardType: TextInputType.number,
+                  style: TextStyle(fontSize: 24),
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Color.fromRGBO(168, 11, 3, 1),
+
+                      )
+                    )
+                  ),
+                  onChanged: (value) {},
+                ),
+              ),
+              SizedBox(
+                width: 80,
+                child: TextFormField(
+                  obscureText: false,
+                  keyboardType: TextInputType.number,
+                  style: TextStyle(fontSize: 24),
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Color.fromRGBO(168, 11, 3, 1),
+                          )
+                      )
+                  ),
+                  onChanged: (value) {},
+                ),
+              ),
+              SizedBox(
+                width: 80,
+                child: TextFormField(
+                  obscureText: false,
+                  keyboardType: TextInputType.number,
+                  style: TextStyle(fontSize: 24),
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Color.fromRGBO(168, 11, 3, 1),
+                          )
+                      )
+                  ),
+                  onChanged: (value) {},
+                ),
+              ),
+              SizedBox(
+                width: 80,
+                child: TextFormField(
+                  obscureText: false,
+                  keyboardType: TextInputType.number,
+                  style: TextStyle(fontSize: 24),
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Color.fromRGBO(168, 11, 3, 1),
+                          )
+                      )
+                  ),
+                  onChanged: (value) {},
+                ),
+              ),
+            ],
+          )
+        );
+
+
+
+      }
+    }
+

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-import './otpConfirm_screen.dart';
+//import './otpConfirm_screen.dart';
 
-class PhoneRegisterScreen extends StatelessWidget {
+class ForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Color.fromRGBO(168, 11, 3, 1), //change your color here
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Color.fromRGBO(168, 11, 3, 1), //change your color here
+          ),
+          title: Text(''),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
-        title: Text(''),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
         body: Center(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -30,22 +30,21 @@ class PhoneRegisterScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const Text('Register With',
-                  style: TextStyle( fontSize: 25, height: 1.5, )
+                  const Text('Forgot Your',
+                      style: TextStyle( fontSize: 25, height: 1.5, )
                   ),
-                   RichText(text: new TextSpan(
-                     // Note: Styles for TextSpans must be explicitly defined.
-                     // Child text spans will inherit styles from parent
-                     style: new TextStyle(
-                       fontSize: 14.0,
-                       color: Colors.black,
-                     ),
-                     children: <TextSpan>[
-                       new TextSpan(text: 'Your',style: new TextStyle(fontSize: 25, height: 1.5)),
-                       new TextSpan(text: ' Phone', style: new TextStyle(fontSize: 25, color: Color.fromRGBO(168, 11, 3, 1))),
-                     ],
-                    )
-                   ),
+                  RichText(text: new TextSpan(
+                    // Note: Styles for TextSpans must be explicitly defined.
+                    // Child text spans will inherit styles from parent
+                    style: new TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      new TextSpan(text: 'Password', style: new TextStyle(fontSize: 25, color: Color.fromRGBO(168, 11, 3, 1))),
+                    ],
+                  )
+                  ),
 
                   Container(
                     alignment: Alignment.center,
@@ -64,7 +63,7 @@ class PhoneRegisterScreen extends StatelessWidget {
                           hintStyle: TextStyle(color: Colors.grey),
                           border: UnderlineInputBorder(),
                           labelStyle: TextStyle(
-                            color: Colors.red
+                              color: Colors.red
                           )
                       ),
                     ),
@@ -74,7 +73,7 @@ class PhoneRegisterScreen extends StatelessWidget {
                     margin: const EdgeInsets.fromLTRB(20, 20, 20, 00),
                     child: RaisedButton(
 
-                      child: Text('Send OTP',
+                      child: Text('Send Request',
                           style: TextStyle(fontSize: 18)
                       ),
                       color: Color.fromRGBO(250, 250, 250, 1),
@@ -85,12 +84,7 @@ class PhoneRegisterScreen extends StatelessWidget {
                           style: BorderStyle.solid
                       ),
                           borderRadius: BorderRadius.all(Radius.circular(25.0))),
-                      onPressed: (){
-                        Navigator.push(
-                            context, MaterialPageRoute(
-                          builder: (context) => OtpConfirm(),
-                        ));
-                      },
+                      onPressed: (){},
                     ),
                   ),
 

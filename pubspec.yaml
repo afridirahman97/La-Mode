@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  pin_code_fields: ^7.3.0
+  pin_entry_text_field: 0.1.4
 
 
 
